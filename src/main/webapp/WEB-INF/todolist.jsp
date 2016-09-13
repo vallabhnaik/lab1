@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="style.css" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -21,7 +22,7 @@
     <td>${entry.date}</td>
     <c:choose>
     <c:when test="${entry.operation.equals('yes')}">
-    <td><center><a href='tododelete?id=${entry.getId()}'>X</a></center></td>
+    <td><center><a href='tododelete?id=${entry.getId()}'><span class="glyphicon glyphicon-minus-sign" style="color:red"></span></a></center></td>
     </c:when>
     <c:otherwise>
     <td></td>
@@ -34,7 +35,7 @@
     <td style="text-decoration: line-through;">${entry.date}</td>
     <c:choose>
     <c:when test="${entry.operation.equals('yes')}">
-    <td style="text-decoration: line-through;"><center><a href='tododelete?id=${entry.getId()}'>X</a></center></td>
+    <td style="text-decoration: line-through;"><center><a href='tododelete?id=${entry.getId()}'><span class="glyphicon glyphicon-minus-sign" style="color:red"></span></a></center></td>
     </c:when>
     <c:otherwise>
     <td></td>
