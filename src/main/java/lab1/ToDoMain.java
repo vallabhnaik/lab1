@@ -1,0 +1,48 @@
+package lab1;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/ToDoMain")
+public class ToDoMain extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+        public ToDoMain() {
+        super();
+        
+        // TODO Auto-generated constructor stub
+    }
+
+	public void init(ServletConfig config) throws ServletException 
+	{
+		super.init(config);
+		List<todolist> entries = new ArrayList<todolist>();
+		entries.add(new todolist("1","Take out trash", "08/28/2016","yes"));
+		entries.add(new todolist("2","Buy Milk", "08/26/2016","yes"));
+		entries.add(new todolist("3","Watch Suicide Squad", "08/20/2016","yes"));
+		getServletContext().setAttribute("entries", entries);
+		
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		List<todolist> entries = (ArrayList<todolist>)getServletContext().getAttribute("entries");
+		request.getRequestDispatcher("/WEB-INF/todolist.jsp").forward(request, response);
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		
+	}
+
+}
