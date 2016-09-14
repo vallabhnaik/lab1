@@ -25,9 +25,9 @@ public class ToDoMain extends HttpServlet {
 		super.init(config);
 		List<todolist> entries = new ArrayList<todolist>();
 		ArrayList<todolist> deletedItems=new ArrayList<todolist>();
-		entries.add(new todolist("1","Take out trash", "08/28/2016"));
-		entries.add(new todolist("2","Buy Milk", "08/26/2016"));
-		entries.add(new todolist("3","Watch Suicide Squad", "08/20/2016"));
+		entries.add(new todolist("1","Take out trash", "08/28/2016",""));
+		entries.add(new todolist("2","Buy Milk", "08/26/2016",""));
+		entries.add(new todolist("3","Watch Suicide Squad", "08/20/2016",""));
 		getServletContext().setAttribute("entries", entries);
 		getServletContext().setAttribute("deletedItems", deletedItems);
 		

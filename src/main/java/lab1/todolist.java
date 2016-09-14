@@ -5,12 +5,14 @@ public class todolist {
 	private String id;
 	private String name;
 	private String date;
+	private String removeDate;
 	
-	public todolist(String id,String name,String date){
+	public todolist(String id,String name,String date,String removeDate){
 		super();
 		this.id = id;
 		this.name = name;
 		this.date = date;
+		this.removeDate=removeDate;
 	}
 
 	public String getId() {
@@ -36,5 +38,14 @@ public class todolist {
 	public void setDate(String date) {
 		this.date = date;
 	}
+	
+	public String getRemoveDate() {
+		return removeDate;
+	}
+
+	public void setRemoveDate(String removeDate) {
+		this.removeDate = removeDate;
+	}
+
 	
 }
