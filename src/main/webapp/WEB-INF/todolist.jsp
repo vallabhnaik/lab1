@@ -33,6 +33,7 @@
   <tr>
     <td>${list.name}</td>
     <td>${list.date}</td>
+    <td>${list.removeDate}</td>
   </tr>
 </c:forEach>
 </table>

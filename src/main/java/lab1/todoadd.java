@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.taglibs.standard.tag.common.core.RemoveTag;
+
 @WebServlet("/todoadd")
 public class todoadd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -27,7 +29,7 @@ public class todoadd extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String name = request.getParameter("listname");
-		String operation = "yes";
+		String removeDate = "";
 		DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 
 		Date today = Calendar.getInstance().getTime();        
@@ -40,7 +42,7 @@ public class todoadd extends HttpServlet {
 		}
 		String fcnt = Integer.toString(cnt);
 		fcnt = fcnt+1;
-		entries.add(new todolist(fcnt, name, reportDate));
+		entries.add(new todolist(fcnt, name, reportDate,removeDate));
 		response.sendRedirect("ToDoMain");
 	}
 

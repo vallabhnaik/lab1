@@ -1,7 +1,11 @@
 package lab1;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -23,14 +27,16 @@ public class tododelete extends HttpServlet {
 		String id = request.getParameter("id");
 		List<todolist> entries = (ArrayList<todolist>)getServletContext().getAttribute("entries");
 		ArrayList<todolist> deletedItems=(ArrayList<todolist>)getServletContext().getAttribute("deletedItems");
-		 
+		DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+		Date today = Calendar.getInstance().getTime();        
+		String removeDate = df.format(today);
 		try{
 		for(todolist i:entries)
 		{
 			
 			if(i.getId().equals(id))
 			{
-				deletedItems.add(new todolist(i.getId(), i.getName(), i.getDate()));
+				deletedItems.add(new todolist(i.getId(), i.getName(), i.getDate(),removeDate));
 				//System.out.println(i.getId()+i.getOperation());
 				entries.remove(i);
 			}
