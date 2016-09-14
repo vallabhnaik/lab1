@@ -16,40 +16,25 @@
 <table border="1">
 <c:forEach items="${entries}" var="entry">
   <tr>
-  <c:choose>
-  <c:when test="${entry.operation.equals('yes')}">
     <td>${entry.name}</td>
     <td>${entry.date}</td>
-    <c:choose>
-    <c:when test="${entry.operation.equals('yes')}">
-    <td><center><a href='tododelete?id=${entry.getId()}'><span class="glyphicon glyphicon-minus-sign" style="color:red"></span></a></center></td>
-    </c:when>
-    <c:otherwise>
-    <td></td>
-    </c:otherwise>
-    </c:choose>
- 
-  </c:when>
-  <c:otherwise>
-     <td style="text-decoration: line-through;">${entry.name}</td>
-    <td style="text-decoration: line-through;">${entry.date}</td>
-    <c:choose>
-    <c:when test="${entry.operation.equals('yes')}">
-    <td style="text-decoration: line-through;"><center><a href='tododelete?id=${entry.getId()}'><span class="glyphicon glyphicon-minus-sign" style="color:red"></span></a></center></td>
-    </c:when>
-    <c:otherwise>
-    <td></td>
-    </c:otherwise>
-    </c:choose>
- 
-  </c:otherwise>
-  </c:choose>
-    
+    <td><center><a href='tododelete?id=${entry.getId()}'><span class="glyphicon glyphicon-minus-sign" style="color:red"></span></a></center></td>   
   </tr>
 </c:forEach>
 <tr>
 <td><form action="todoadd" method="get"><input type="text" name="listname">
 <input type="submit" value="Add"></form></td></tr>
+</table>
+
+<br><br>
+
+<table border="1">
+<c:forEach items="${deletedItems}" var="list">
+  <tr>
+    <td>${list.name}</td>
+    <td>${list.date}</td>
+  </tr>
+</c:forEach>
 </table>
 </body>
 </html>
