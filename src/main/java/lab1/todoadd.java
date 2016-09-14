@@ -40,7 +40,7 @@ public class todoadd extends HttpServlet {
 		}
 		String fcnt = Integer.toString(cnt);
 		fcnt = fcnt+1;
-		entries.add(new todolist(fcnt, name, reportDate, operation));
+		entries.add(new todolist(fcnt, name, reportDate));
 		response.sendRedirect("ToDoMain");
 	}
 

@@ -22,17 +22,27 @@ public class tododelete extends HttpServlet {
 		
 		String id = request.getParameter("id");
 		List<todolist> entries = (ArrayList<todolist>)getServletContext().getAttribute("entries");
+		ArrayList<todolist> deletedItems=(ArrayList<todolist>)getServletContext().getAttribute("deletedItems");
+		 
+		try{
 		for(todolist i:entries)
 		{
+			
 			if(i.getId().equals(id))
 			{
-				i.setOperation("no");
+				deletedItems.add(new todolist(i.getId(), i.getName(), i.getDate()));
 				//System.out.println(i.getId()+i.getOperation());
+				entries.remove(i);
 			}
+			
 		}
+		}catch(Exception e){}
 		
-		response.sendRedirect("ToDoMain");
+		System.out.println("entries is : "+entries.size());
+		System.out.println("entries is : "+deletedItems.size());
 		
+		request.getServletContext().setAttribute("deletedItems", deletedItems);
+		response.sendRedirect("ToDoMain");		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
